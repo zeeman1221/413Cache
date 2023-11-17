@@ -5,14 +5,14 @@ ncvhdl: *W,DLCPTH (./cds.lib,25): cds.lib Invalid path '/afs/umbc.edu/users/t/w/
 DEFINE lab5 /afs/umbc.edu/users/t/w/tweir1/home/413/lab5
 |
 ncvhdl: *W,DLCPTH (./cds.lib,28): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/lab5' (cds.lib command ignored).
-TOOL:	ncvhdl	15.20-s035: Started on Nov 17, 2023 at 04:07:04 EST
+TOOL:	ncvhdl	15.20-s035: Started on Nov 17, 2023 at 06:13:36 EST
 ncvhdl
     -messages
     -linedebug
     -cdslib ./cds.lib
     -hdlvar ./hdl.var
     -smartorder
-    testGenerateReadMiss.vhd
+    generateReadMiss.vhd
 
 DEFINE 413 /afs/umbc.edu/users/t/w/tweir1/home/413/413
 |
@@ -20,7 +20,7 @@ ncvhdl_p: *W,DLCPTH (./cds.lib,25): cds.lib Invalid path '/afs/umbc.edu/users/t/
 DEFINE lab5 /afs/umbc.edu/users/t/w/tweir1/home/413/lab5
 |
 ncvhdl_p: *W,DLCPTH (./cds.lib,28): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/lab5' (cds.lib command ignored).
-testGenerateReadMiss.vhd:
+generateReadMiss.vhd:
 	errors: 0, warnings: 0
 DEFINE 413 /afs/umbc.edu/users/t/w/tweir1/home/413/413
 |
@@ -28,8 +28,8 @@ ncvhdl_cg: *W,DLCPTH (./cds.lib,25): cds.lib Invalid path '/afs/umbc.edu/users/t
 DEFINE lab5 /afs/umbc.edu/users/t/w/tweir1/home/413/lab5
 |
 ncvhdl_cg: *W,DLCPTH (./cds.lib,28): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/lab5' (cds.lib command ignored).
-VHDL.TESTGENERATEREADMISS (entity):
-	streams: 1, words: 38
-VHDL.TESTGENERATEREADMISS:TEST (architecture):
-	streams: 1, words: 2579
-TOOL:	ncvhdl	15.20-s035: Exiting on Nov 17, 2023 at 04:07:05 EST  (total: 00:00:01)
+VHDL.GENERATEREADMISS (entity):
+	streams: 15, words: 954
+VHDL.GENERATEREADMISS:STRUCTURAL (architecture):
+	streams: 1, words: 442
+TOOL:	ncvhdl	15.20-s035: Exiting on Nov 17, 2023 at 06:13:39 EST  (total: 00:00:03)

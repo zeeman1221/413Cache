@@ -59,8 +59,7 @@ signal t0,t1,t2,t3,t4 : std_logic:='0';
         if (rising_edge(clk) and t1 = '1' and t0 = '1' and t2 = '1' and t3 = '1') then
             t4 <= not t4;
         end if;
-    end if;
-    if busy = '0' then
+    else
         t0 <= '0';
         t1 <= '0';
         t2 <= '0';

@@ -67,7 +67,7 @@ architecture test of testGenerateReadMiss is
         start : in std_logic;
         CPU_A : in std_logic_vector(5 downto 0);
         MEM_D : in std_logic_vector(7 downto 0);
-        HitMiss : in std_logic;
+        HitMissIn : in std_logic;
         busy  : out std_logic;
         CPU_D : out std_logic_vector(7 downto 0);
         MEM_A : out std_logic_vector(5 downto 0)

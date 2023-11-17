@@ -18,30 +18,27 @@ entity sr is
 end sr;                          
 
 architecture structural of sr is 
-signal qtemp, qbartemp : std_logic;
-  
+signal qtemp : std_logic:='0';
+signal qbartemp : std_logic:='1';  
 begin
   
   output: process                 
 
-  begin                           
-    wait until ( clk'EVENT and clk = '1' ); 
-    if J = '1' and K = '0' then
+  begin
+    q <= qtemp;
+    qbar <= qbartemp;                            
+    wait until ( clk'EVENT and clk = '1' );
+    if J = '1' and K = '1' then
+      qtemp <= qbartemp;
+      qbartemp <= not qtemp; 
+  elsif J = '1' then
         qtemp <= '1';
         qbartemp <= '0';
-    end if;
-    if J = '0' and K = '1' then
+  elsif K = '1' then
       qtemp <= '0';
       qbartemp <= '1';
     end if;
-    if J = '1' and K = '1' then
-    qtemp <= qbartemp;
-    qbartemp <= not qtemp;
-    end if;
-  end process output;        
-
-  q <= qtemp;
-  qbar <= qbartemp;    
+  end process output;           
 end structural;  
 
 

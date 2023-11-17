@@ -14,5 +14,6 @@ Created default SHM database waves
 ncsim> probe -create -shm :busy :clk :CPU_A :CPU_D :HitMiss :MEM_A :MEM_D :r_w :rst :start
 Created probe 1
 ncsim> run
-Simulation interrupted at 40 NS + 1
-ncsim> 
+Simulation interrupted at 60 NS + 1
+ncsim> ^C
+ncsim> exit

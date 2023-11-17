@@ -39,7 +39,7 @@ port (
     start : in std_logic;
     CPU_A : in std_logic_vector(5 downto 0);
     MEM_D : in std_logic_vector(7 downto 0);
-    HitMiss : in std_logic;
+    HitMissIn : in std_logic;
     busy  : out std_logic;
     CPU_D : out std_logic_vector(7 downto 0);
     MEM_A : out std_logic_vector(5 downto 0)
@@ -170,7 +170,7 @@ signal confirmWrite : std_logic;
 signal Validclk : std_logic;
 signal busySet: std_logic;
 signal clk11bar, clk12bar : std_logic;
-signal RDone, WDone, rst_busy, r_wbar, HitMiss: std_logic;
+signal RDone, WDone, rst_busy, r_wbar: std_logic:='0';
 signal WHDone, WMDone, RHDone : std_logic:='0';
 begin
     -- comb. neg. edge clk dffs --
@@ -185,9 +185,9 @@ begin
     setValidRM: dff port map(busyQ,Validclk,validQ,stud);
     
     --update HIT with signal for a hit success
-    setRMDone : and3 port map(clk2,HitMiss, r_w, RHDone);
+    setRMDone : and3 port map(clk2,HitMissIn, r_w, RHDone);
     --both writes have the same conditions to complete
-    setWHDone : and3 port map(clk3,r_wbar, WDone);
+    setWHDone : and2 port map(clk3,r_wbar, WDone);
     --clk19 means RMDone
     RActionDone: or2 port map(clk19, RHDone, RDone);
     setRST_Busy: or3 port map(RDone, WDone, rst, rst_busy);
@@ -209,6 +209,5 @@ begin
     --chose clk11 and clk11bar because we want two signals that are 0 and 1 respectively during confirmWrite = 1 (which occurs at clk12)
     setWriteHigh : cachecell port map(MEM_D(0), confirmWrite, clk11, clk11bar, CPU_D(0));
     busy <= busyQ;
-    valid <= validQ;
 
   end structural;
