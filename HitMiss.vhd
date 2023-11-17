@@ -10,15 +10,17 @@ use IEEE.std_logic_1164.all;
 
 entity HitMiss is
 
-  port (
-    clk : in std_logic;
-    CacheTag : in std_logic_vector(1 downto 0);
-    TagInp   : in std_logic_vector(1 downto 0);
-    valid    : in std_logic;
-    clk8     : in std_logic;
-    output   : out std_logic);
+    port (
+        clk : in std_logic;
+        CacheTag : in std_logic_vector(1 downto 0);
+        TagInp   : in std_logic_vector(1 downto 0);
+        r_w      : in std_logic;
+        valid    : in std_logic;
+        readhit   : out std_logic;
+        writemiss : out std_logic;
+        writehit  : out std_logic;
+        readmiss  : out std_logic);
 end HitMiss;
-
 architecture structural of HitMiss is
 
 component xor2
@@ -69,16 +71,26 @@ signal temp1, temp2, otemp : std_logic;
 signal notTemp1, notTemp2 : std_logic;
 -- hit/ miss signal --
 signal HitMiss : std_logic;
+signal notHitMiss : std_logic;
+signal notRW : std_logic;
 
 begin
     -- comparator generation --
-    hitmissOp0 : xor2 port map(input1=>CacheTag(0), input2=>TagInp(0), output=>temp1);
-    hitmissOp1 : xor2 port map(input1=>CacheTag(1), input2=>TagInp(1), output=>temp2);
+    hitmissOp0 : xor2 port map(CacheTag(0), TagInp(0), temp1);
+    hitmissOp1 : xor2 port map(CacheTag(1), TagInp(1), temp2);
     getNotTemp1 : inverter port map(temp1, notTemp1);
     getNotTemp2 : inverter port map(temp2, notTemp2);
     getMatchingTags : and2 port map(notTemp2, notTemp1, otemp);
+    
     -- hit/ miss generation --
-    generateHitMiss : and3 port map(clk, otemp, valid, HitMiss);
-
-  output <= HitMiss;
+    generateHitMiss : and2 port map(otemp, valid, HitMiss);
+    -- invert hit miss --
+    invHitMiss : inverter port map(HitMiss, notHitMiss);
+    -- invert read/write --
+    invRW : inverter port map(r_w, notRW);
+    -- 4 stages --
+    isReadMiss : and2 port map(r_w, notHitMiss, readmiss);
+    isReadHit : and2 port map(r_w, HitMiss, readhit);
+    isWriteMiss : and2 port map(notRW, notHitMiss, writemiss);
+    isWriteHit : and2 port map(notRW, hitMiss, writehit);
 end structural;

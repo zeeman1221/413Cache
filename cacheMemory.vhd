@@ -42,7 +42,7 @@ entity cacheMemory is
  );
 end cacheMemory;
 
-architecture Behavioral of cacheMemory is
+architecture structural of cacheMemory is
     component decoder 
 
     port (
@@ -211,4 +211,4 @@ begin -- CPU Address(5 downto 0): 5,4 for tag; 3,2 for block; 1,0 for byte
     tag1 : cachecell port map(CPU_A(1), sigConst, sigConst, sigConst, CPU_D(1));
     
 
-end Behavioral;
+end structural;

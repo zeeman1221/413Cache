@@ -2,7 +2,6 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_textio.all;
 use STD.textio.all;
-library work;
 
 entity cacheBlockTest is
 end cacheBlockTest;
@@ -20,8 +19,8 @@ component cacheBlock
         sByte4 : in std_logic;
         r_w : in std_logic;
         CPU_bits : in std_logic_vector(1 downto 0);
-       wrD : in std_logic_vector(7 downto 0);
-      rdD : out std_logic_vector(7 downto 0));
+        wrD : in std_logic_vector(7 downto 0);
+        rdD : inout std_logic_vector(7 downto 0));
 end component;
 
 for inst1: cacheBlock use entity work.cacheBlock(structural);
@@ -41,8 +40,7 @@ for inst1: cacheBlock use entity work.cacheBlock(structural);
     begin
     inst1 : cacheBlock port map(clock, rst, sBlock, sByte1,sByte2,sByte3,sByte4, r_w, CPU_bits, wrD, rdD);
 
-    tclk : process
-            begin  -- process clk
+    tclk : process begin  -- process clk
 
         clock<='0','1' after 5 ns;
         wait for 10 ns;

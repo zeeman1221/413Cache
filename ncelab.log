@@ -1,53 +1,44 @@
 ncelab: 15.20-s035: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-DEFINE 413 /afs/umbc.edu/users/t/w/tweir1/home/413/413
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
 |
-ncelab: *W,DLCPTH (./cds.lib,25): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/413' (cds.lib command ignored).
-DEFINE lab5 /afs/umbc.edu/users/t/w/tweir1/home/413/lab5
+ncelab: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
 |
-ncelab: *W,DLCPTH (./cds.lib,28): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/lab5' (cds.lib command ignored).
-TOOL:	ncelab	15.20-s035: Started on Nov 17, 2023 at 06:13:49 EST
+ncelab: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+TOOL:	ncelab	15.20-s035: Started on Nov 17, 2023 at 05:53:31 EST
 ncelab
     -messages
     -access rwc
     -cdslib cds.lib
     -hdlvar hdl.var
-    testGenerateReadMiss
+    HitMiss_test
 
-ncelab: *W,ARCMRA: Elaborating the VHDL.TESTGENERATEREADMISS:TEST, MRA (most recently analyzed) architecture.
+ncelab: *W,ARCMRA: Elaborating the VHDL.HITMISS_TEST:TEST, MRA (most recently analyzed) architecture.
 	Elaborating the design hierarchy:
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1) with design unit (VHDL.GENERATEREADMISS:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):getClk) with design unit (VHDL.CCOUNT:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):RSTBAR) with design unit (VHDL.INVERTER:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):c11bar) with design unit (VHDL.INVERTER:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):c12bar) with design unit (VHDL.INVERTER:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):write) with design unit (VHDL.INVERTER:STRUCTURAL).
-ncelab: *W,CUNOTB: component instance is not fully bound (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):Vlidclk) [File:generateReadMiss.vhd, Line:184].
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setValidRM) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setRMDone) with design unit (VHDL.AND3:STRUCTURAL).
-ncelab: *W,CUNOTB: component instance is not fully bound (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setWHDone) [File:generateReadMiss.vhd, Line:190].
-ncelab: *W,CUNOTB: component instance is not fully bound (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):RActionDone) [File:generateReadMiss.vhd, Line:192].
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setRST_Busy) with design unit (VHDL.OR3:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setBusyQ) with design unit (VHDL.SR:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ0) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ1) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ2) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ3) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ4) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setMEM_AQ5) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUDEFB: default binding occurred for component instance (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setcWrite) with design unit (VHDL.DFF:STRUCTURAL).
-ncelab: *W,CUNOTB: component instance is not fully bound (:testGenerateReadMiss(test):inst1@generateReadMiss(structural):setWriteHigh) [File:generateReadMiss.vhd, Line:210].
-DEFINE 413 /afs/umbc.edu/users/t/w/tweir1/home/413/413
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):hitmissOp0) with design unit (VHDL.XOR2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):hitmissOp1) with design unit (VHDL.XOR2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):getNotTemp1) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):getNotTemp2) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):getMatchingTags) with design unit (VHDL.AND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):generateHitMiss) with design unit (VHDL.AND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):invHitMiss) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):invRW) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):isReadMiss) with design unit (VHDL.AND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):isReadHit) with design unit (VHDL.AND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):isWriteMiss) with design unit (VHDL.AND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:HitMiss_test(test):inst1@HitMiss(structural):isWriteHit) with design unit (VHDL.AND2:STRUCTURAL).
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
 |
-ncvhdl_cg: *W,DLCPTH (./cds.lib,25): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/413' (cds.lib command ignored).
-DEFINE lab5 /afs/umbc.edu/users/t/w/tweir1/home/413/lab5
+ncvhdl_cg: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
 |
-ncvhdl_cg: *W,DLCPTH (./cds.lib,28): cds.lib Invalid path '/afs/umbc.edu/users/t/w/tweir1/home/413/lab5' (cds.lib command ignored).
+ncvhdl_cg: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
 	Building instance specific data structures.
 	Design hierarchy summary:
 		            Instances  Unique
-		Components:        19       8
-		Default bindings:  21      11
-		Processes:         19       9
-		Signals:           51      51
-	Writing initial simulation snapshot: VHDL.TESTGENERATEREADMISS:TEST
-TOOL:	ncelab	15.20-s035: Exiting on Nov 17, 2023 at 06:13:49 EST  (total: 00:00:00)
+		Components:        15       5
+		Default bindings:  12       9
+		Processes:         14       5
+		Signals:           18      18
+	Writing initial simulation snapshot: VHDL.HITMISS_TEST:TEST
+TOOL:	ncelab	15.20-s035: Exiting on Nov 17, 2023 at 05:53:31 EST  (total: 00:00:00)
