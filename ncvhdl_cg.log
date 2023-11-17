@@ -1,0 +1,17 @@
+TOOL:	ncvhdl_cg	15.20-s035: Started on Oct 17, 2023 at 19:55:07 EDT
+ncvhdl_cg
+    -NOCOPYRIGHT
+    -NOVITALACCL
+    -MESSAGES
+    -CDSLIB cds.lib
+    -HDLVAR hdl.var
+    -MESSAGES
+    -LINEDEBUG
+    -IMPLICIT vhdl
+    -XHANDOFF vhdl
+    -XHANDOFF vhdl
+    VHDL.DECODER_TB
+
+VHDL.DECODER_TB (entity):
+	streams: 1, words: 38
+TOOL:	ncvhdl_cg	15.20-s035: Exiting on Oct 17, 2023 at 19:55:07 EDT  (total: 00:00:00)

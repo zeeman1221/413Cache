@@ -1,0 +1,34 @@
+# File Created by xm33737 at Fri Sep 29 13:08:33 2023
+# assisted by CdsLibEditor
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+
+SOFTINCLUDE $CDS_INCISIVE/tools/inca/files/cds.lib
+
+
+DEFINE analogLib $CDS_IC/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE basic $CDS_IC/tools/dfII/etc/cdslib/basic
+
+
+DEFINE NCSU_Analog_Parts $CDK_DIR/lib/NCSU_Analog_Parts
+DEFINE NCSU_Digital_Parts $CDK_DIR/lib/NCSU_Digital_Parts
+DEFINE NCSU_TechLib_ami06 $CDK_DIR/lib/NCSU_TechLib_ami06
+DEFINE NCSU_TechLib_ami16 $CDK_DIR/lib/NCSU_TechLib_ami16
+DEFINE NCSU_TechLib_hp06 $CDK_DIR/lib/NCSU_TechLib_hp06
+DEFINE NCSU_TechLib_tsmc02 $CDK_DIR/lib/NCSU_TechLib_tsmc02
+DEFINE NCSU_TechLib_tsmc02d $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+DEFINE NCSU_TechLib_tsmc03 $CDK_DIR/lib/NCSU_TechLib_tsmc03
+DEFINE NCSU_TechLib_tsmc03d $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+DEFINE NCSU_TechLib_tsmc04_4M2P $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+
+DEFINE vhdl vhdl
+
+DEFINE cmpe413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/cmpe413
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+DEFINE 413CMPE /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413CMPE
+DEFINE gpdk045 /umbc/software/design_kits2/gpdk045_v_6_0/gpdk045
+DEFINE lab4 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/lab4
+DEFINE lab5 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/lab5
+DEFINE lab6_decoder /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/lab6_decoder
+#Removed by ddDeleteObj: DEFINE lab6_dlatch /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/lab6_dlatch
+DEFINE lab6_dee_latch /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/lab6_dee_latch

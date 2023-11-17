@@ -1,0 +1,35 @@
+ncvhdl: 15.20-s035: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+|
+ncvhdl: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+|
+ncvhdl: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+TOOL:	ncvhdl	15.20-s035: Started on Nov 17, 2023 at 01:07:43 EST
+ncvhdl
+    -messages
+    -linedebug
+    -cdslib cds.lib
+    -hdlvar hdl.var
+    -smartorder
+    cacheBlockTest.vhd
+
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+|
+ncvhdl_p: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+|
+ncvhdl_p: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+cacheBlockTest.vhd:
+	errors: 0, warnings: 0
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+|
+ncvhdl_cg: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+|
+ncvhdl_cg: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+VHDL.CACHEBLOCKTEST (entity):
+	streams: 1, words: 38
+VHDL.CACHEBLOCKTEST:TEST (architecture):
+	streams: 2, words: 2963
+TOOL:	ncvhdl	15.20-s035: Exiting on Nov 17, 2023 at 01:07:46 EST  (total: 00:00:03)

@@ -1,0 +1,20 @@
+ncsim: 15.20-s035: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+|
+ncsim: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+|
+ncsim: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+TOOL:	ncsim	15.20-s035: Started on Nov 17, 2023 at 01:08:01 EST
+ncsim
+    -input ncsim.run
+    -messages
+    -cdslib cds.lib
+    -hdlvar hdl.var
+    cacheBlockTest
+
+Loading snapshot vhdl.cacheblocktest:test .......
+ncsim: *E,DLNORD: Intermediate file for architecture vhdl.and3:structural (SIG) <0x01ae86a7> could not be read (no such object).
+
+ncsim: *F,NOSIMU: Errors initializing simulation 'cacheBlockTest'.
+TOOL:	ncsim	15.20-s035: Exiting on Nov 17, 2023 at 01:08:02 EST  (total: 00:00:01)

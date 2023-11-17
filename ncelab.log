@@ -1,0 +1,166 @@
+ncelab: 15.20-s035: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+DEFINE CMPE413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413
+|
+ncelab: *W,DLCPTH (./cds.lib,26): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/CMPE413' (cds.lib command ignored).
+DEFINE 413 /afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413
+|
+ncelab: *W,DLCPTH (./cds.lib,27): cds.lib Invalid path '/afs/umbc.edu/users/x/m/xm33737/home/CMPE413/413' (cds.lib command ignored).
+TOOL:	ncelab	15.20-s035: Started on Nov 17, 2023 at 01:07:51 EST
+ncelab
+    -messages
+    -access rwc
+    -cdslib cds.lib
+    -hdlvar hdl.var
+    cacheBlockTest
+
+ncelab: *W,ARCMRA: Elaborating the VHDL.CACHEBLOCKTEST:TEST, MRA (most recently analyzed) architecture.
+	Elaborating the design hierarchy:
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):and00) with design unit (VHDL.AND3:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):and01) with design unit (VHDL.AND3:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):and10) with design unit (VHDL.AND3:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):and11) with design unit (VHDL.AND3:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector1) with design unit (VHDL.SELECTOR:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector1@selector(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector1@selector(structural):makeAndReadEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector1@selector(structural):makeAndWriteEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector2) with design unit (VHDL.SELECTOR:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector2@selector(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector2@selector(structural):makeAndReadEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector2@selector(structural):makeAndWriteEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector3) with design unit (VHDL.SELECTOR:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector3@selector(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector3@selector(structural):makeAndReadEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector3@selector(structural):makeAndWriteEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector4) with design unit (VHDL.SELECTOR:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector4@selector(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector4@selector(structural):makeAndReadEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeSelector4@selector(structural):makeAndWriteEn) with design unit (VHDL.NAND2:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1) with design unit (VHDL.CACHEBYTE:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell1) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell1@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell1@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell2) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell2@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell2@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell3) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell3@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell3@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell4) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell4@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell4@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell5) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell5@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell5@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell6) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell6@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell6@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell7) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell7@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell7@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell8) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell8@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte1@cacheByte(structural):cachecell8@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2) with design unit (VHDL.CACHEBYTE:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell1) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell1@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell1@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell2) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell2@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell2@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell3) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell3@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell3@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell4) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell4@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell4@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell5) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell5@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell5@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell6) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell6@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell6@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell7) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell7@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell7@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell8) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell8@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte2@cacheByte(structural):cachecell8@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3) with design unit (VHDL.CACHEBYTE:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell1) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell1@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell1@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell2) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell2@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell2@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell3) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell3@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell3@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell4) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell4@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell4@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell5) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell5@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell5@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell6) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell6@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell6@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell7) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell7@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell7@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell8) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell8@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte3@cacheByte(structural):cachecell8@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4) with design unit (VHDL.CACHEBYTE:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):makeInverter) with design unit (VHDL.INVERTER:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell1) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell1@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell1@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell2) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell2@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell2@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell3) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell3@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell3@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell4) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell4@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell4@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell5) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell5@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell5@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell6) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell6@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell6@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell7) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell7@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell7@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell8) with design unit (VHDL.CACHECELL:BEHAVIORAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell8@cachecell(Behavioral):makeDlatch) with design unit (VHDL.DLATCH:STRUCTURAL).
+ncelab: *W,CUDEFB: default binding occurred for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeCacheByte4@cacheByte(structural):cachecell8@cachecell(Behavioral):makeTransmissionGate) with design unit (VHDL.TX:STRUCTURAL).
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux1) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux1) [File:cacheBlock.vhd, Line:140].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux2) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux2) [File:cacheBlock.vhd, Line:141].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux3) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux3) [File:cacheBlock.vhd, Line:142].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux4) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux4) [File:cacheBlock.vhd, Line:143].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux5) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux5) [File:cacheBlock.vhd, Line:144].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux6) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux6) [File:cacheBlock.vhd, Line:145].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux7) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux7) [File:cacheBlock.vhd, Line:146].
+ncelab: *E,CUCPMD: inappropriate modes over port association: MUX.OUTPUT [1.1.1.2].
+ncelab: *W,CUDEFF: default binding failed for component instance (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux8) with design unit (VHDL.MUX:STRUCTURAL) because of the above mentioned reason.
+ncelab: *W,CUNOTB: component instance is not fully bound (:cacheBlockTest(test):inst1@cacheBlock(structural):makeMux8) [File:cacheBlock.vhd, Line:147].
+TOOL:	ncelab	15.20-s035: Exiting on Nov 17, 2023 at 01:07:53 EST  (total: 00:00:02)
