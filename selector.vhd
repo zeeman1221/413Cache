@@ -36,7 +36,8 @@ port (
     chipEnable : in std_logic;
     r_w : in std_logic;
     rdEn : out std_logic;
-    wrEn : out std_logic
+    wrEn : out std_logic;
+    Hit : in std_logic
  );
 end selector;
 
@@ -56,13 +57,22 @@ component nand2
     output   : out std_logic);
 end component;
 
+component and2
+
+  port (
+    input1   : in  std_logic;
+    input2   : in  std_logic;
+    output   : out std_logic);
+end component;
+
 -- signals --
 signal notR_W : std_logic;
-
+signal rdEnQ, wrEnQ : std_logic;
 
 begin
 makeInverter : inverter port map(r_w, notR_W);
-makeAndReadEn : nand2 port map(r_w, chipEnable, rdEn);
-makeAndWriteEn : nand2 port map(notR_W, chipEnable, wrEn);
-
+makeAndReadEn : nand2 port map(r_w, chipEnable, rdEnQ);
+makeAndWriteEn : nand2 port map(notR_W, chipEnable, wrEnQ);
+checkHitRd : and2 port map(rdEnQ, Hit, rdEnQ);
+checkHitWr : and2 port map(wrEnQ, Hit, wrEn);
 end structural;

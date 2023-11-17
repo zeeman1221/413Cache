@@ -14,13 +14,10 @@ entity HitMiss is
         clk : in std_logic;
         CacheTag : in std_logic_vector(1 downto 0);
         TagInp   : in std_logic_vector(1 downto 0);
-        r_w      : in std_logic;
         valid    : in std_logic;
-        readhit   : out std_logic;
-        writemiss : out std_logic;
-        writehit  : out std_logic;
-        readmiss  : out std_logic);
+        Hit     : out std_logic);
 end HitMiss;
+
 architecture structural of HitMiss is
 
 component xor2
@@ -70,7 +67,6 @@ signal temp1, temp2, otemp : std_logic;
 -- inverter temp values --
 signal notTemp1, notTemp2 : std_logic;
 -- hit/ miss signal --
-signal HitMiss : std_logic;
 signal notHitMiss : std_logic;
 signal notRW : std_logic;
 
@@ -83,14 +79,6 @@ begin
     getMatchingTags : and2 port map(notTemp2, notTemp1, otemp);
     
     -- hit/ miss generation --
-    generateHitMiss : and2 port map(otemp, valid, HitMiss);
-    -- invert hit miss --
-    invHitMiss : inverter port map(HitMiss, notHitMiss);
-    -- invert read/write --
-    invRW : inverter port map(r_w, notRW);
-    -- 4 stages --
-    isReadMiss : and2 port map(r_w, notHitMiss, readmiss);
-    isReadHit : and2 port map(r_w, HitMiss, readhit);
-    isWriteMiss : and2 port map(notRW, notHitMiss, writemiss);
-    isWriteHit : and2 port map(notRW, hitMiss, writehit);
+    generateHitMiss : and2 port map(otemp, valid, Hit);
+
 end structural;

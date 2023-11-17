@@ -33,15 +33,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity generateReadMiss is
 port (
-    clk   : in std_logic;
-    rst   : in std_logic;
+    CPU_A : in std_logic_vector(5 downto 0);
+    CPU_D : out std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
-    CPU_A : in std_logic_vector(5 downto 0);
+    clk   : in std_logic;
+    rst   : in std_logic;
     MEM_D : in std_logic_vector(7 downto 0);
-    HitMissIn : in std_logic;
     busy  : out std_logic;
-    CPU_D : out std_logic_vector(7 downto 0);
+    enable : out std_logic;
     MEM_A : out std_logic_vector(5 downto 0)
 );
 end generateReadMiss;
@@ -119,6 +119,7 @@ component cCount
     clk	     : in  std_logic;
     busy     : in  std_logic;
     rst      : in  std_logic;
+    clk1     : out std_logic;
     clk2     : out std_logic;
     clk3     : out std_logic;
     clk4     : out std_logic;
@@ -139,8 +140,26 @@ component cCount
     clk19    : out std_logic);
 end component;
 
+component cacheMemory is
+ port ( 
+    clk : in std_logic;
+    rst : in std_logic;
+    r_w : in std_logic;
+    CPU_A : in std_logic_vector(5 downto 0);
+    CPU_D : out std_logic_vector(7 downto 0);
+    Mem_D : in std_logic_vector(7 downto 0);
+    HM : out std_logic;
+    clk8 : in std_logic;
+    clk9 : in std_logic;
+    clk10 : in std_logic;
+    clk12 : in std_logic;
+    clk14 : in std_logic
+ );
+end component;
+
 
 -- all 19 clock signals for Dff --
+signal clk1 : std_logic:='0';
 signal clk2 : std_logic:='0';
 signal clk3 : std_logic:='0';
 signal clk4 : std_logic:='0';
@@ -163,51 +182,44 @@ signal clk19 : std_logic:='0';
 signal stud : std_logic;
 
 -- other signals --
-signal resetbar : std_logic;
+signal resetbar, HitMissIn : std_logic;
 signal busyQ : std_logic:='0';
-signal validQ : std_logic:='0';
-signal confirmWrite : std_logic;
-signal Validclk : std_logic;
-signal busySet: std_logic;
-signal clk11bar, clk12bar : std_logic;
+signal r_wQ: std_logic;
+signal clk8bar : std_logic;
 signal RDone, WDone, rst_busy, r_wbar: std_logic:='0';
-signal WHDone, WMDone, RHDone : std_logic:='0';
+signal RHDone : std_logic:='0';
 begin
     -- comb. neg. edge clk dffs --
-    getClk : cCount port map(clk, busyQ, rst, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19);
+    getClk : cCount port map(clk, busyQ, rst, clk1, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19);
 --    setProp : inverter port map(clk3,stopProp);
-
+    override : and2 port map(r_w, clk8bar, r_wQ);
+    
     RSTBAR: inverter port map(rst, resetbar);
-    c11bar: inverter port map(clk11, clk11bar);
-    c12bar: inverter port map(clk12, clk12bar);
+    c8bar: inverter port map(clk8, clk8bar);
     write: inverter port map(r_w,r_wbar);
-    Vlidclk: or2 port map(rst,clk11,Validclk);
-    setValidRM: dff port map(busyQ,Validclk,validQ,stud);
+
     
     --update HIT with signal for a hit success
-    setRMDone : and3 port map(clk2,HitMissIn, r_w, RHDone);
+    setRMDone : and3 port map(clk1,HitMissIn, r_w, RHDone);
     --both writes have the same conditions to complete
-    setWHDone : and2 port map(clk3,r_wbar, WDone);
+    setWHDone : and2 port map(clk2,r_wbar, WDone);
     --clk19 means RMDone
-    RActionDone: or2 port map(clk19, RHDone, RDone);
+    RActionDone: or2 port map(clk17, RHDone, RDone);
     setRST_Busy: or3 port map(RDone, WDone, rst, rst_busy);
 
     setBusyQ: sr port map(clk,start, rst_busy, busyQ, stud);
     
-    setMEM_AQ0: dff port map(CPU_A(0),clk4,MEM_A(0),stud);
-    setMEM_AQ1: dff port map(CPU_A(1),clk4,MEM_A(1),stud);
-    setMEM_AQ2: dff port map(CPU_A(2),clk4,MEM_A(2),stud);
-    setMEM_AQ3: dff port map(CPU_A(3),clk4,MEM_A(3),stud);
-    setMEM_AQ4: dff port map(CPU_A(4),clk4,MEM_A(4),stud);
-    setMEM_AQ5: dff port map(CPU_A(5),clk4,MEM_A(5),stud);
+    setMEM_AQ0: dff port map(start,clk8bar,MEM_A(0),stud);
+    setMEM_AQ1: dff port map(start,clk8bar,MEM_A(1),stud);
+    setMEM_AQ2: dff port map(CPU_A(2),clk8bar,MEM_A(2),stud);
+    setMEM_AQ3: dff port map(CPU_A(3),clk8bar,MEM_A(3),stud);
+    setMEM_AQ4: dff port map(CPU_A(4),clk8bar,MEM_A(4),stud);
+    setMEM_AQ5: dff port map(CPU_A(5),clk8bar,MEM_A(5),stud);
        
-    
-    setcWrite: dff port map(busyQ,clk12bar,confirmWrite,stud);
+    cache: cacheMemory port map(clk, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8, clk9, clk10, clk12, clk14);
 
-    -- begin state machine for ReadMiss --
-   
-    --chose clk11 and clk11bar because we want two signals that are 0 and 1 respectively during confirmWrite = 1 (which occurs at clk12)
-    setWriteHigh : cachecell port map(MEM_D(0), confirmWrite, clk11, clk11bar, CPU_D(0));
+
+    enable <= clk7;
     busy <= busyQ;
 
   end structural;

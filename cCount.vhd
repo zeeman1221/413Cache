@@ -14,6 +14,7 @@ entity cCount is
     clk	     : in  std_logic;
     busy     : in  std_logic;
     rst      : in  std_logic;
+    clk1     : out std_logic;
     clk2     : out std_logic;
     clk3     : out std_logic;
     clk4     : out std_logic;
@@ -67,7 +68,7 @@ signal t0,t1,t2,t3,t4 : std_logic:='0';
         t3 <= '0';
         t4 <= '0';
     end if;
-
+clk1 <= t0 and not t1 and not t2 and not t3 and not t4;
 clk2 <= not t0 and t1 and not t2 and not t3 and not t4;
 clk3 <= t0 and t1 and not t2 and not t3 and not t4;
 clk4 <= not t0 and not t1 and t2 and not t3 and not t4;
