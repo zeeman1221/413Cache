@@ -37,7 +37,7 @@ entity cacheMemory is
     rst : in std_logic;
     r_w : in std_logic;
     CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : out std_logic_vector(7 downto 0);
+    CPU_D : inout std_logic_vector(7 downto 0);
     Mem_D : in std_logic_vector(7 downto 0);
     HM : out std_logic;
     clk8 : in std_logic;
@@ -74,7 +74,7 @@ port (
     sByte4 : in std_logic;
     r_w : in std_logic;
     CPU_Bits : in std_logic_vector(1 downto 0);
-    rdD : out std_logic_vector(7 downto 0);
+    rdD : inout std_logic_vector(7 downto 0);
     clk9 : in std_logic;
     clk10 : in std_logic;
     clk12 : in std_logic;
@@ -83,7 +83,7 @@ port (
 );
 end component;
 
-component and2 is
+component and2
 
   port (
     input1   : in  std_logic;
@@ -125,7 +125,7 @@ component or4
     output   : out std_logic);
 end component;
 
-component HitMiss is
+component HitMiss
     port (
         clk : in std_logic;
         CacheTag : in std_logic_vector(1 downto 0);

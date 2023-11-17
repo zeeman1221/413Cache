@@ -45,19 +45,19 @@ signal t0,t1,t2,t3,t4 : std_logic:='0';
     output: process (busy,clk)
      begin       
     if busy = '1' then
-        if (rising_edge(clk)) then
+        if (falling_edge(clk)) then
             t0 <= not t0;
         end if;
-        if (rising_edge(clk) and t0 = '1') then
+        if (falling_edge(clk) and t0 = '1') then
             t1 <= not t1;
         end if;
-        if (rising_edge(clk) and t1 = '1' and t0 = '1') then
+        if (falling_edge(clk) and t1 = '1' and t0 = '1') then
             t2 <= not t2;
         end if;
-        if (rising_edge(clk) and t1 = '1' and t0 = '1' and t2 = '1') then
+        if (falling_edge(clk) and t1 = '1' and t0 = '1' and t2 = '1') then
             t3 <= not t3;
         end if;
-        if (rising_edge(clk) and t1 = '1' and t0 = '1' and t2 = '1' and t3 = '1') then
+        if (falling_edge(clk) and t1 = '1' and t0 = '1' and t2 = '1' and t3 = '1') then
             t4 <= not t4;
         end if;
     end if;

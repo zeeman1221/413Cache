@@ -43,7 +43,7 @@ port (
   sByte4 : in std_logic;
   r_w : in std_logic;
   CPU_bits : in std_logic_vector(1 downto 0);
-  rdD : out std_logic_vector(7 downto 0);
+  rdD : inout std_logic_vector(7 downto 0);
   clk9 : in std_logic;
   clk10 : in std_logic;
   clk12 : in std_logic;
@@ -150,10 +150,10 @@ begin
     makeSelector4 : selector port map(ce11, notRW, readE4, writeE4, Hit);
     -- create 4 cache bytes for instantiaton --
     --first instance of MEM_D eventually transisiton to CPU_D
-    makeCacheByte1: cacheByte port map(writeE1, readE1, MEM_D, rdD00, clk9, MEM_D); -- "cache00"
-    makeCacheByte2: cacheByte port map(writeE2, readE2, MEM_D, rdD01, clk10, MEM_D); -- "cache01"
-    makeCacheByte3: cacheByte port map(writeE3, readE3, MEM_D, rdD10, clk12, MEM_D); -- "cache10"
-    makeCacheByte4: cacheByte port map(writeE4, readE4, MEM_D, rdD11, clk14, MEM_D); -- "cache11"
+    makeCacheByte1: cacheByte port map(writeE1, readE1, rdD, rdD00, clk9, MEM_D); -- "cache00"
+    makeCacheByte2: cacheByte port map(writeE2, readE2, rdD, rdD01, clk10, MEM_D); -- "cache01"
+    makeCacheByte3: cacheByte port map(writeE3, readE3, rdD, rdD10, clk12, MEM_D); -- "cache10"
+    makeCacheByte4: cacheByte port map(writeE4, readE4, rdD, rdD11, clk14, MEM_D); -- "cache11"
 
     -- 8 mux for data selections --
     makeMux1: mux port map(rdD00(0), rdD01(0), rdD10(0), rdD11(0), CPU_bits(0) , CPU_bits(1), rdD(0));

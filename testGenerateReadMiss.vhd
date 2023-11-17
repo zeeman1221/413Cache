@@ -62,7 +62,7 @@ architecture test of testGenerateReadMiss is
     component generateReadMiss
     port (
             CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : out std_logic_vector(7 downto 0);
+    CPU_D : inout std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
     clk   : in std_logic;
@@ -94,8 +94,8 @@ begin
 tclk : process
     begin  -- process clk
 
-clk<='0','1' after 5 ns;
-wait for 10 ns;
+clk<='0','1' after 10 ns;
+wait for 20 ns;
 end process tclk;
 
 --io_process: process
@@ -175,19 +175,41 @@ MEM_D(5) <= '1';
 MEM_D(6) <= '1';
 MEM_D(7) <= '1';
 
---CPU_D(0) <= '0';
---CPU_D(1) <= '0';
---CPU_D(2) <= '0';
---CPU_D(3) <= '0';
---CPU_D(4) <= '0';
---CPU_D(5) <= '0';
---CPU_D(6) <= '0';
---CPU_D(7) <= '0';
-
-wait for 10 ns;
+wait for 20 ns;
 start <= '0';
 
-wait for 50 ns;
+wait for 400 ns;
+start <= '1';
+
+wait for 20 ns;
+start <= '0';
+
+wait for 400 ns;
+r_w <= '0';
+start<= '1';
+
+wait for 20 ns;
+start <= '0';
+
+wait for 400 ns;
+CPU_A(0) <= '1';
+CPU_A(1) <= '1';
+CPU_A(2) <= '0';
+CPU_A(3) <= '1';
+CPU_A(4) <= '1';
+CPU_A(5) <= '1';
+start <= '1';
+
+wait for 20 ns;
+start <= '0';
+
+wait for 160 ns;
+rst <= '1';
+
+wait for 200 ns;
+
+
+
 
 end process manualInp;
 end test;

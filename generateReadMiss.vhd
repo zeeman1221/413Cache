@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity generateReadMiss is
 port (
     CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : out std_logic_vector(7 downto 0);
+    CPU_D : inout std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
     clk   : in std_logic;
@@ -140,13 +140,13 @@ component cCount
     clk19    : out std_logic);
 end component;
 
-component cacheMemory is
+component cacheMemory
  port ( 
     clk : in std_logic;
     rst : in std_logic;
     r_w : in std_logic;
     CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : out std_logic_vector(7 downto 0);
+    CPU_D : inout std_logic_vector(7 downto 0);
     Mem_D : in std_logic_vector(7 downto 0);
     HM : out std_logic;
     clk8 : in std_logic;
@@ -184,12 +184,16 @@ signal stud : std_logic;
 -- other signals --
 signal resetbar, HitMissIn : std_logic;
 signal busyQ : std_logic:='0';
-signal r_wQ: std_logic;
-signal clk8bar : std_logic;
+signal r_wQ : std_logic;
+signal clk8bar,clkbar, clk1bar, clk2bar: std_logic;
 signal RDone, WDone, rst_busy, r_wbar: std_logic:='0';
 signal RHDone : std_logic:='0';
+signal GND : std_logic:='0';
 begin
     -- comb. neg. edge clk dffs --
+    clkbarset : inverter port map (clk, clkbar);
+    clkbar1set : inverter port map (clk1, clk1bar);
+    clkbar2set : inverter port map (clk2, clk2bar);
     getClk : cCount port map(clk, busyQ, rst, clk1, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19);
 --    setProp : inverter port map(clk3,stopProp);
     override : and2 port map(r_w, clk8bar, r_wQ);
@@ -200,23 +204,23 @@ begin
 
     
     --update HIT with signal for a hit success
-    setRMDone : and3 port map(clk1,HitMissIn, r_w, RHDone);
+    setRMDone : and3 port map(clk1bar,HitMissIn, r_w, RHDone);
     --both writes have the same conditions to complete
-    setWHDone : and2 port map(clk2,r_wbar, WDone);
+    setWHDone : and2 port map(clk1,r_wbar, WDone);
     --clk19 means RMDone
-    RActionDone: or2 port map(clk17, RHDone, RDone);
+    RActionDone: or2 port map(clk16, RHDone, RDone);
     setRST_Busy: or3 port map(RDone, WDone, rst, rst_busy);
 
-    setBusyQ: sr port map(clk,start, rst_busy, busyQ, stud);
+    setBusyQ: sr port map(clkbar,start, rst_busy, busyQ, stud);
     
-    setMEM_AQ0: dff port map(start,clk8bar,MEM_A(0),stud);
-    setMEM_AQ1: dff port map(start,clk8bar,MEM_A(1),stud);
+    setMEM_AQ0: dff port map(GND,clk8bar,MEM_A(0),stud);
+    setMEM_AQ1: dff port map(GND,clk8bar,MEM_A(1),stud);
     setMEM_AQ2: dff port map(CPU_A(2),clk8bar,MEM_A(2),stud);
     setMEM_AQ3: dff port map(CPU_A(3),clk8bar,MEM_A(3),stud);
     setMEM_AQ4: dff port map(CPU_A(4),clk8bar,MEM_A(4),stud);
     setMEM_AQ5: dff port map(CPU_A(5),clk8bar,MEM_A(5),stud);
        
-    cache: cacheMemory port map(clk, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8, clk9, clk10, clk12, clk14);
+    cache: cacheMemory port map(clkbar, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8, clk9, clk10, clk12, clk14);
 
 
     enable <= clk7;

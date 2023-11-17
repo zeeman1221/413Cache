@@ -46,31 +46,47 @@ tclk : process
 
     clk<='0','1' after 5 ns;
     wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    clk<='0','1' after 5 ns;
+    wait for 10 ns;
+    
 
   end process tclk;
 
 io_process: process
-    file infile  : text is in "cCount_in.txt"; -- Use input file called "alu_4in.txt" to test inputs
-    file outfile : text is out "cCount_out.txt"; -- Put output results in file called "alu_4out.txt"
-    variable busy_i, rst_i: std_logic; -- Declare 4-bit input variable
-    variable buf : line;
+    --file infile  : text is in "cCount_in.txt"; -- Use input file called "alu_4in.txt" to test inputs
+    --file outfile : text is out "cCount_out.txt"; -- Put output results in file called "alu_4out.txt"
+    --variable busy_i, rst_i: std_logic; -- Declare 4-bit input variable
+    --variable buf : line;
 
 begin
-
-    while not (endfile(infile)) loop
+    busy <= '1';
+    rst <= '0';
+   -- while not (endfile(infile)) loop
         -- Readline for input file declared below
-        readline(infile,buf);
-        read (buf,busy_i);
-        busy <= busy_i;
-    
-        readline(infile,buf);
-        read (buf,rst_i);
-        rst <= rst_i;
-
-        wait until falling_edge(clk);
-
-
-        end loop;
+       -- readline(infile,buf);
+      --  read (buf,busy_i);
+     --   busy <= busy_i;
+   -- 
+      --  readline(infile,buf);
+    --    read (buf,rst_i);
+  --      rst <= rst_i;
+--
+  --      wait until falling_edge(clk);
+--
+--
+    --    end loop;
 
 end process io_process;
 
