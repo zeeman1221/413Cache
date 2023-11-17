@@ -144,10 +144,10 @@ begin
     and10 : and3 port map(clk, sBlock, sByte3, ce10);
     and11 : and3 port map(clk, sBlock, sByte4, ce11);
     -- create 4 selectors for 8 cache cell instantiations --
-    makeSelector1 : selector port map(ce00, notRW, readE1, writeE1, Hit);
-    makeSelector2 : selector port map(ce01, notRW, readE2, writeE2, Hit);
-    makeSelector3 : selector port map(ce10, notRW, readE3, writeE3, Hit);
-    makeSelector4 : selector port map(ce11, notRW, readE4, writeE4, Hit);
+    makeSelector1 : selector port map(ce00, r_w, readE1, writeE1, Hit);
+    makeSelector2 : selector port map(ce01, r_w, readE2, writeE2, Hit);
+    makeSelector3 : selector port map(ce10, r_w, readE3, writeE3, Hit);
+    makeSelector4 : selector port map(ce11, r_w, readE4, writeE4, Hit);
     -- create 4 cache bytes for instantiaton --
     --first instance of MEM_D eventually transisiton to CPU_D
     makeCacheByte1: cacheByte port map(writeE1, readE1, rdD, rdD00, clk9, MEM_D); -- "cache00"

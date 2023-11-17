@@ -41,7 +41,7 @@ entity cachecell is
   );
 end cachecell;
 
-architecture Behavioral of cachecell is
+architecture structural of cachecell is
     component tx              
   port ( sel   : in std_logic;
          selnot: in std_logic;
@@ -63,4 +63,4 @@ signal notOutPort : std_logic;
 begin
     makeDlatch : Dlatch port map(wrD, wrEn, outPort, notOutPort);
     makeTransmissionGate : tx port map(rdEn, rdEnBar, outPort, rdOut);
-end Behavioral;
+end structural;

@@ -98,6 +98,74 @@ clk<='0','1' after 10 ns;
 wait for 20 ns;
 end process tclk;
 
+
+MEMD : process
+begin
+
+MEM_D(0) <= '0';
+MEM_D(1) <= '0';
+MEM_D(2) <= '0';
+MEM_D(3) <= '0';
+MEM_D(4) <= '0';
+MEM_D(5) <= '0';
+MEM_D(6) <= '0';
+MEM_D(7) <= '0';
+
+wait for 180 ns;
+MEM_D(0) <= '1';
+MEM_D(1) <= '1';
+MEM_D(2) <= '1';
+MEM_D(3) <= '1';
+MEM_D(4) <= '1';
+MEM_D(5) <= '1';
+MEM_D(6) <= '1';
+MEM_D(7) <= '1';
+
+wait for 20 ns;
+MEM_D(0) <= '0';
+MEM_D(1) <= '1';
+MEM_D(2) <= '0';
+MEM_D(3) <= '1';
+MEM_D(4) <= '0';
+MEM_D(5) <= '1';
+MEM_D(6) <= '0';
+MEM_D(7) <= '1';
+
+wait for 20 ns;
+MEM_D(0) <= '1';
+MEM_D(1) <= '0';
+MEM_D(2) <= '1';
+MEM_D(3) <= '0';
+MEM_D(4) <= '1';
+MEM_D(5) <= '0';
+MEM_D(6) <= '1';
+MEM_D(7) <= '0';
+
+wait for 20 ns;
+MEM_D(0) <= '1';
+MEM_D(1) <= '1';
+MEM_D(2) <= '1';
+MEM_D(3) <= '1';
+MEM_D(4) <= '0';
+MEM_D(5) <= '0';
+MEM_D(6) <= '0';
+MEM_D(7) <= '0';
+
+wait for 20 ns;
+MEM_D(0) <= '0';
+MEM_D(1) <= '0';
+MEM_D(2) <= '0';
+MEM_D(3) <= '0';
+MEM_D(4) <= '0';
+MEM_D(5) <= '0';
+MEM_D(6) <= '0';
+MEM_D(7) <= '0';
+
+wait;
+
+
+end process MEMD;
+
 --io_process: process
 --        file infile  : text is in "GRM_in.txt"; -- Use input file called "alu_4in.txt" to test inputs
 --        file outfile : text is out "GRM_out.txt"; -- Put output results in file called "alu_4out.txt"
@@ -165,15 +233,6 @@ CPU_A(2) <= '1';
 CPU_A(3) <= '0';
 CPU_A(4) <= '0';
 CPU_A(5) <= '0';
-
-MEM_D(0) <= '1';
-MEM_D(1) <= '1';
-MEM_D(2) <= '1';
-MEM_D(3) <= '1';
-MEM_D(4) <= '1';
-MEM_D(5) <= '1';
-MEM_D(6) <= '1';
-MEM_D(7) <= '1';
 
 wait for 20 ns;
 start <= '0';

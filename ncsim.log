@@ -14,5 +14,8 @@ Created default SHM database waves
 ncsim> probe -create -shm :busy :clk :CPU_A :CPU_D :enable :MEM_A :MEM_D :r_w :rst :start
 Created probe 1
 ncsim> run
-Simulation interrupted at 11071710 NS + 3
-ncsim> 
+Simulation interrupted at 18324330 NS + 3
+ncsim> ^C
+ncsim> exit
+...Regained control from SimVision
+-------------------------------------

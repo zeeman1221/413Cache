@@ -73,6 +73,6 @@ begin
 makeInverter : inverter port map(r_w, notR_W);
 makeAndReadEn : nand2 port map(r_w, chipEnable, rdEnQ);
 makeAndWriteEn : nand2 port map(notR_W, chipEnable, wrEnQ);
-checkHitRd : and2 port map(rdEnQ, Hit, rdEnQ);
+checkHitRd : and2 port map(rdEnQ, Hit, rdEn);
 checkHitWr : and2 port map(wrEnQ, Hit, wrEn);
 end structural;

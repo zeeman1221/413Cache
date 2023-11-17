@@ -32,7 +32,8 @@ entity cCount is
     clk16    : out std_logic;
     clk17     : out std_logic;
     clk18     : out std_logic;
-    clk19    : out std_logic);
+    clk19    : out std_logic;
+    clk8long : out std_logic);
 end cCount;
 
 
@@ -75,7 +76,8 @@ clk4 <= not t0 and not t1 and t2 and not t3 and not t4;
 clk5 <= t0 and not t1 and t2 and not t3 and not t4;
 clk6 <= not t0 and t1 and t2 and not t3 and not t4;
 clk7 <= t0 and t1 and t2 and not t3 and not t4;
-clk8 <= t3 or t4;
+clk8 <= not t0 and not t1 and not t2 and t3 and t4;
+clk8long <= t3 or t4;
 clk9 <= t0 and not t1 and not t2 and t3 and not t4;
 clk10 <= not t0 and t1 and not t2 and t3 and not t4;
 clk11 <= t0 and t1 and not t2 and t3 and not t4;

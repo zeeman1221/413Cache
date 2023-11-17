@@ -102,13 +102,13 @@ MEM6chck : and2 port map (MEM_D(6), clksigbar, MEM_DQ(6));
 MEM7chck : and2 port map (MEM_D(7), clksigbar, MEM_DQ(7));
 
 overwrite0 : or2 port map (wrDQ(0), MEM_DQ(0), overwrite(0));
-overwrite1 : or2 port map (wrDQ(0), MEM_DQ(1), overwrite(1));
-overwrite2 : or2 port map (wrDQ(0), MEM_DQ(2), overwrite(2));
-overwrite3 : or2 port map (wrDQ(0), MEM_DQ(3), overwrite(3));
-overwrite4 : or2 port map (wrDQ(0), MEM_DQ(4), overwrite(4));
-overwrite5 : or2 port map (wrDQ(0), MEM_DQ(5), overwrite(5));
-overwrite6 : or2 port map (wrDQ(0), MEM_DQ(6), overwrite(6));
-overwrite7 : or2 port map (wrDQ(0), MEM_DQ(7), overwrite(7));
+overwrite1 : or2 port map (wrDQ(1), MEM_DQ(1), overwrite(1));
+overwrite2 : or2 port map (wrDQ(2), MEM_DQ(2), overwrite(2));
+overwrite3 : or2 port map (wrDQ(3), MEM_DQ(3), overwrite(3));
+overwrite4 : or2 port map (wrDQ(4), MEM_DQ(4), overwrite(4));
+overwrite5 : or2 port map (wrDQ(5), MEM_DQ(5), overwrite(5));
+overwrite6 : or2 port map (wrDQ(6), MEM_DQ(6), overwrite(6));
+overwrite7 : or2 port map (wrDQ(7), MEM_DQ(7), overwrite(7));
 
 
 

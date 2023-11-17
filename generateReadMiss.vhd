@@ -137,7 +137,8 @@ component cCount
     clk16    : out std_logic;
     clk17     : out std_logic;
     clk18     : out std_logic;
-    clk19    : out std_logic);
+    clk19    : out std_logic;
+    clk8long : out std_logic);
 end component;
 
 component cacheMemory
@@ -178,6 +179,7 @@ signal clk16 : std_logic:='0';
 signal clk17 : std_logic:='0';
 signal clk18 : std_logic:='0';
 signal clk19 : std_logic:='0';
+signal clk8long : std_logic:='0';
 -- useless signal for qbars -- 
 signal stud : std_logic;
 
@@ -185,7 +187,7 @@ signal stud : std_logic;
 signal resetbar, HitMissIn : std_logic;
 signal busyQ : std_logic:='0';
 signal r_wQ : std_logic;
-signal clk8bar,clkbar, clk1bar, clk2bar: std_logic;
+signal clk8bar,clkbar, clk1bar, clk7bar: std_logic;
 signal RDone, WDone, rst_busy, r_wbar: std_logic:='0';
 signal RHDone : std_logic:='0';
 signal GND : std_logic:='0';
@@ -193,8 +195,8 @@ begin
     -- comb. neg. edge clk dffs --
     clkbarset : inverter port map (clk, clkbar);
     clkbar1set : inverter port map (clk1, clk1bar);
-    clkbar2set : inverter port map (clk2, clk2bar);
-    getClk : cCount port map(clk, busyQ, rst, clk1, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19);
+    clkbar2set : inverter port map (clk7, clk7bar);
+    getClk : cCount port map(clk, busyQ, rst, clk1, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19, clk8long);
 --    setProp : inverter port map(clk3,stopProp);
     override : and2 port map(r_w, clk8bar, r_wQ);
     
@@ -220,10 +222,10 @@ begin
     setMEM_AQ4: dff port map(CPU_A(4),clk8bar,MEM_A(4),stud);
     setMEM_AQ5: dff port map(CPU_A(5),clk8bar,MEM_A(5),stud);
        
-    cache: cacheMemory port map(clkbar, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8, clk9, clk10, clk12, clk14);
+    cache: cacheMemory port map(clkbar, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8long, clk8, clk10, clk12, clk14);
 
 
-    enable <= clk7;
+    enable <= clk6;
     busy <= busyQ;
 
   end structural;
