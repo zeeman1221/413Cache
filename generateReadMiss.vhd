@@ -186,7 +186,7 @@ signal stud : std_logic;
 -- other signals --
 signal resetbar, HitMissIn : std_logic;
 signal busyQ : std_logic:='0';
-signal r_wQ : std_logic;
+signal r_wQ, wrDon, wrDonf : std_logic;
 signal clk8bar,clkbar, clk1bar, clk7bar: std_logic;
 signal RDone, WDone, rst_busy, r_wbar: std_logic:='0';
 signal RHDone : std_logic:='0';
@@ -206,9 +206,12 @@ begin
 
     
     --update HIT with signal for a hit success
-    setRMDone : and3 port map(clk1bar,HitMissIn, r_w, RHDone);
+    setRMDone : and3 port map(clk,HitMissIn, r_w, RHDone);
+   
+    writept1 : dff port map(busyQ, clkbar,wrDon, stud);
+
     --both writes have the same conditions to complete
-    setWHDone : and2 port map(clk1,r_wbar, WDone);
+    setWHDone : and2 port map(wrDon,r_wbar, WDone);
     --clk19 means RMDone
     RActionDone: or2 port map(clk16, RHDone, RDone);
     setRST_Busy: or3 port map(RDone, WDone, rst, rst_busy);
@@ -225,7 +228,7 @@ begin
     cache: cacheMemory port map(clkbar, rst, r_wQ, CPU_A, CPU_D, MEM_D, HitMissIn, clk8long, clk8, clk10, clk12, clk14);
 
 
-    enable <= clk6;
+    enable <= clk7;
     busy <= busyQ;
 
   end structural;

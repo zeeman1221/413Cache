@@ -13,6 +13,7 @@ architecture test of cCountTest is
         clk	     : in  std_logic;
         busy     : in  std_logic;
         rst      : in  std_logic;
+        clk1     : out std_logic;
         clk2     : out std_logic;
         clk3     : out std_logic;
         clk4     : out std_logic;
@@ -30,16 +31,17 @@ architecture test of cCountTest is
         clk16    : out std_logic;
         clk17     : out std_logic;
         clk18     : out std_logic;
-        clk19    : out std_logic);
+        clk19    : out std_logic;
+        clk8long : out std_logic);
   end component;
 
 for inst1: cCount use entity work.cCount(structural);
 signal rst  : std_logic;
 signal busy : std_logic;
-signal clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19 : std_logic;
+signal clk1, clk8long, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19 : std_logic;
 signal clk : std_logic;
 begin
-    inst1 : cCount port map(clk, busy, rst, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19);
+    inst1 : cCount port map(clk, busy, rst, clk1, clk2, clk3, clk4, clk5, clk6, clk7, clk8, clk9, clk10, clk11, clk12, clk13, clk14, clk15, clk16, clk17, clk18, clk19, clk8long);
 
 tclk : process
         begin  -- process clk
@@ -87,7 +89,7 @@ begin
 --
 --
     --    end loop;
-
+wait;
 end process io_process;
 
 end test;

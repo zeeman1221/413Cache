@@ -38,11 +38,62 @@ end cCount;
 
 
 architecture structural of cCount is
+component and5 is
+  port (
+    input1   : in  std_logic;
+    input2   : in  std_logic;
+    input3   : in  std_logic;
+    input4   : in  std_logic;
+    input5   : in std_logic;
+    output   : out std_logic);
+end component;
+
+component inverter is
+  port (
+    input   : in  std_logic;
+    output   : out std_logic);
+end component;
+
+component or2 is
+  port (
+    input1   : in  std_logic;
+    input2   : in  std_logic;
+    output   : out std_logic);
+end component;
 
 signal t0,t1,t2,t3,t4 : std_logic:='0';
-
+signal t0bar, t1bar, t2bar, t3bar, t4bar : std_logic;
 
   begin
+    sett0bar : inverter port map (t0, t0bar);
+    sett1bar : inverter port map (t1, t1bar);
+    sett2bar : inverter port map (t2, t2bar);
+    sett3bar : inverter port map (t3, t3bar);
+    sett4bar : inverter port map (t4, t4bar);
+  
+    setclk1 : and5 port map (t0, t1bar, t2bar, t3bar, t4bar, clk1);
+    setclk2 : and5 port map (t0bar, t1, t2bar, t3bar, t4bar, clk2);
+    setclk3 : and5 port map (t0, t1, t2bar, t3bar, t4bar, clk3);
+    setclk4 : and5 port map (t0bar, t1bar, t2, t3bar, t4bar, clk4);
+    setclk5 : and5 port map (t0, t1bar, t2, t3bar, t4bar, clk5);
+    setclk6 : and5 port map (t0bar, t1, t2, t3bar, t4bar, clk6);
+    setclk7 : and5 port map (t0, t1, t2, t3bar, t4bar, clk7);
+    setclk8 : and5 port map (t0bar, t1bar, t2bar, t3, t4bar, clk8);
+    setclk9 : and5 port map (t0, t1bar, t2bar, t3, t4bar, clk9);
+    setclk10 : and5 port map (t0bar, t1, t2bar, t3, t4bar, clk10);
+    setclk11 : and5 port map (t0, t1, t2bar, t3, t4bar, clk11);
+    setclk12 : and5 port map (t0bar, t1bar, t2, t3, t4bar, clk12);
+    setclk13 : and5 port map (t0, t1bar, t2, t3, t4bar, clk13);
+    setclk14 : and5 port map (t0bar, t1, t2, t3, t4bar, clk14);
+    setclk15 : and5 port map (t0, t1, t2, t3, t4bar, clk15);
+    setclk16 : and5 port map (t0bar, t1bar, t2bar, t3bar, t4, clk16);
+    setclk17 : and5 port map (t0, t1bar, t2bar, t3bar, t4, clk17);
+    setclk18 : and5 port map (t0bar, t1, t2bar, t3bar, t4, clk18);
+    setclk19 : and5 port map (t0, t1, t2bar, t3bar, t4, clk19);
+    setclk8long : or2 port map (t3, t4, clk8long);
+    
+    
+    
     output: process (busy,clk)
      begin       
     if busy = '1' then
@@ -69,25 +120,5 @@ signal t0,t1,t2,t3,t4 : std_logic:='0';
         t3 <= '0';
         t4 <= '0';
     end if;
-clk1 <= t0 and not t1 and not t2 and not t3 and not t4;
-clk2 <= not t0 and t1 and not t2 and not t3 and not t4;
-clk3 <= t0 and t1 and not t2 and not t3 and not t4;
-clk4 <= not t0 and not t1 and t2 and not t3 and not t4;
-clk5 <= t0 and not t1 and t2 and not t3 and not t4;
-clk6 <= not t0 and t1 and t2 and not t3 and not t4;
-clk7 <= t0 and t1 and t2 and not t3 and not t4;
-clk8 <= not t0 and not t1 and not t2 and t3 and t4;
-clk8long <= t3 or t4;
-clk9 <= t0 and not t1 and not t2 and t3 and not t4;
-clk10 <= not t0 and t1 and not t2 and t3 and not t4;
-clk11 <= t0 and t1 and not t2 and t3 and not t4;
-clk12 <= not t0  and not t1 and t2 and t3 and not t4;
-clk13 <= t0  and not t1 and t2 and t3 and not t4;
-clk14 <= not t0 and t1 and t2 and t3 and not t4;
-clk15 <= t0 and t1 and t2 and t3 and not t4;
-clk16 <= not t0 and not t1 and not t2 and not t3 and t4;
-clk17 <= t0 and not t1 and not t2 and not t3 and t4;
-clk18 <= not t0 and t1 and not t2 and not t3 and t4;
-clk19 <= t0 and t1 and not t2 and not t3 and t4;
 end process output;
 end structural;

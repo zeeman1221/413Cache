@@ -18,7 +18,7 @@ architecture test of chip_test is
   component generateReadMiss  
     port (
     CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : out std_logic_vector(7 downto 0);
+    CPU_D : inout std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
     clk   : in std_logic;
