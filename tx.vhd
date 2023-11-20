@@ -22,8 +22,6 @@ begin
   begin                           
     if (sel = '1' and selnot = '0') then
       output <= input;
-    else
-      output <= 'Z';
     end if;
   end process txprocess;        
  

@@ -27,7 +27,7 @@ begin
     if clk = '1' then 
     q <= d;
     qbar <= not d ;
- end if; 
+    end if;
  end process output;        
                              
 end structural;  

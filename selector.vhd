@@ -49,19 +49,12 @@ component inverter
     output   : out std_logic);
 end component;
 
-component nand2
+component and3
 
   port (
     input1   : in  std_logic;
     input2   : in  std_logic;
-    output   : out std_logic);
-end component;
-
-component and2
-
-  port (
-    input1   : in  std_logic;
-    input2   : in  std_logic;
+    input3   : in  std_logic;
     output   : out std_logic);
 end component;
 
@@ -71,8 +64,6 @@ signal rdEnQ, wrEnQ : std_logic;
 
 begin
 makeInverter : inverter port map(r_w, notR_W);
-makeAndReadEn : nand2 port map(r_w, chipEnable, rdEnQ);
-makeAndWriteEn : nand2 port map(notR_W, chipEnable, wrEnQ);
-checkHitRd : and2 port map(rdEnQ, Hit, rdEn);
-checkHitWr : and2 port map(wrEnQ, Hit, wrEn);
+makeAndReadEn : and3 port map(r_w, chipEnable, Hit, rdEn);
+makeAndWriteEn : and3 port map(notR_W, chipEnable, Hit, wrEn);
 end structural;

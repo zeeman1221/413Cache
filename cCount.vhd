@@ -10,29 +10,18 @@ use IEEE.std_logic_1164.all;
 
 entity cCount is
 
-  port (
+    port (
     clk	     : in  std_logic;
     busy     : in  std_logic;
     rst      : in  std_logic;
     clk1     : out std_logic;
     clk2     : out std_logic;
-    clk3     : out std_logic;
-    clk4     : out std_logic;
-    clk5     : out std_logic;
-    clk6     : out std_logic;
     clk7     : out std_logic;
     clk8     : out std_logic;
-    clk9     : out std_logic;    
     clk10    : out std_logic;
-    clk11     : out std_logic;
     clk12    : out std_logic;
-    clk13     : out std_logic;
     clk14    : out std_logic;
-    clk15     : out std_logic;
     clk16    : out std_logic;
-    clk17     : out std_logic;
-    clk18     : out std_logic;
-    clk19    : out std_logic;
     clk8long : out std_logic);
 end cCount;
 
@@ -63,6 +52,7 @@ end component;
 
 signal t0,t1,t2,t3,t4 : std_logic:='0';
 signal t0bar, t1bar, t2bar, t3bar, t4bar : std_logic;
+signal vcc : std_logic:='1';
 
   begin
     sett0bar : inverter port map (t0, t0bar);
@@ -73,23 +63,23 @@ signal t0bar, t1bar, t2bar, t3bar, t4bar : std_logic;
   
     setclk1 : and5 port map (t0, t1bar, t2bar, t3bar, t4bar, clk1);
     setclk2 : and5 port map (t0bar, t1, t2bar, t3bar, t4bar, clk2);
-    setclk3 : and5 port map (t0, t1, t2bar, t3bar, t4bar, clk3);
-    setclk4 : and5 port map (t0bar, t1bar, t2, t3bar, t4bar, clk4);
-    setclk5 : and5 port map (t0, t1bar, t2, t3bar, t4bar, clk5);
-    setclk6 : and5 port map (t0bar, t1, t2, t3bar, t4bar, clk6);
+  --  setclk3 : and5 port map (t0, t1, t2bar, t3bar, t4bar, clk3);
+   -- setclk4 : and5 port map (t0bar, t1bar, t2, t3bar, t4bar, clk4);
+   -- setclk5 : and5 port map (t0, t1bar, t2, t3bar, t4bar, clk5);
+   -- setclk6 : and5 port map (t0bar, t1, t2, t3bar, t4bar, clk6);
     setclk7 : and5 port map (t0, t1, t2, t3bar, t4bar, clk7);
-    setclk8 : and5 port map (t0bar, t1bar, t2bar, t3, t4bar, clk8);
-    setclk9 : and5 port map (t0, t1bar, t2bar, t3, t4bar, clk9);
-    setclk10 : and5 port map (t0bar, t1, t2bar, t3, t4bar, clk10);
-    setclk11 : and5 port map (t0, t1, t2bar, t3, t4bar, clk11);
-    setclk12 : and5 port map (t0bar, t1bar, t2, t3, t4bar, clk12);
-    setclk13 : and5 port map (t0, t1bar, t2, t3, t4bar, clk13);
-    setclk14 : and5 port map (t0bar, t1, t2, t3, t4bar, clk14);
-    setclk15 : and5 port map (t0, t1, t2, t3, t4bar, clk15);
-    setclk16 : and5 port map (t0bar, t1bar, t2bar, t3bar, t4, clk16);
-    setclk17 : and5 port map (t0, t1bar, t2bar, t3bar, t4, clk17);
-    setclk18 : and5 port map (t0bar, t1, t2bar, t3bar, t4, clk18);
-    setclk19 : and5 port map (t0, t1, t2bar, t3bar, t4, clk19);
+    setclk8 : and5 port map (vcc, t1bar, t2bar, t3, t4bar, clk8);
+  --  setclk9 : and5 port map (t0, t1bar, t2bar, t3, t4bar, clk9);
+    setclk10 : and5 port map (vcc, t1, t2bar, t3, t4bar, clk10);
+  --  setclk11 : and5 port map (t0, t1, t2bar, t3, t4bar, clk11);
+    setclk12 : and5 port map (vcc, t1bar, t2, t3, t4bar, clk12);
+ --   setclk13 : and5 port map (t0, t1bar, t2, t3, t4bar, clk13);
+    setclk14 : and5 port map (vcc, t1, t2, t3, t4bar, clk14);
+  --  setclk15 : and5 port map (t0, t1, t2, t3, t4bar, clk15);
+    setclk16 : and5 port map (vcc, t1bar, t2bar, t3bar, t4, clk16);
+  --  setclk17 : and5 port map (t0, t1bar, t2bar, t3bar, t4, clk17);
+  --  setclk18 : and5 port map (t0bar, t1, t2bar, t3bar, t4, clk18);
+  --  setclk19 : and5 port map (t0, t1, t2bar, t3bar, t4, clk19);
     setclk8long : or2 port map (t3, t4, clk8long);
     
     

@@ -50,8 +50,8 @@ architecture structural of mux is
 
 
         mAnd1 : and3 port map(inp1, notSig1, notSig2, outAnd1);
-        mAnd2 : and3 port map(inp2, notSig1, sig2, outAnd2);
-        mAnd3 : and3 port map(inp3, sig1, notSig2, outAnd3);
+        mAnd2 : and3 port map(inp2, Sig1, notsig2, outAnd2);
+        mAnd3 : and3 port map(inp3, notsig1, Sig2, outAnd3);
         mAnd4 : and3 port map(inp4, sig1, sig2, outAnd4);
         mOr1 : or4 port map(outAnd1, outAnd2, outAnd3, outAnd4, output);
 end structural;

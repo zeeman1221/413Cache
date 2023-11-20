@@ -36,18 +36,12 @@ entity cachecell is
   wrD : in std_logic;
   wrEn : in std_logic;
   rdEn : in std_logic;
-  rdEnBar : in std_logic;
-  rdOut : out std_logic 
+  rdOut : out std_logic ;
+  override:in std_logic
   );
 end cachecell;
 
 architecture structural of cachecell is
-    component tx              
-  port ( sel   : in std_logic;
-         selnot: in std_logic;
-         input : in std_logic;
-         output:out std_logic);
-end component;  
 
 component Dlatch                      
   port ( d   : in  std_logic;
@@ -56,11 +50,26 @@ component Dlatch
          qbar: out std_logic); 
 end component; 
 
+component or2
+  port (
+    input1    : in  std_logic;
+    input2   : in std_logic;
+    output   : out std_logic);
+end component;
+
+component and2
+  port (
+    input1    : in  std_logic;
+    input2   : in std_logic;
+    output   : out std_logic);
+end component;
+
 -- signals --
 signal outPort : std_logic;
-signal notOutPort : std_logic;
+signal notOutPort,outputEn : std_logic;
 
 begin
     makeDlatch : Dlatch port map(wrD, wrEn, outPort, notOutPort);
-    makeTransmissionGate : tx port map(rdEn, rdEnBar, outPort, rdOut);
+    startOutput: or2 port map(override,rdEn,outputEn);
+    output: and2 port map(outputEn, outPort, rdOut);
 end structural;

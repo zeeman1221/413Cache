@@ -89,6 +89,12 @@ begin
 --
 --
     --    end loop;
+    wait for 180 ns;
+    rst <= '1';
+    busy <= '0';
+    wait for 10 ns;
+    rst<='0';
+    busy<='1';
 wait;
 end process io_process;
 

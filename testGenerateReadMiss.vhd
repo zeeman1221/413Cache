@@ -62,7 +62,8 @@ architecture test of testGenerateReadMiss is
     component generateReadMiss
     port (
             CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : inout std_logic_vector(7 downto 0);
+    CPU_DO : inout std_logic_vector(7 downto 0);
+    CPU_DI : inout std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
     clk   : in std_logic;
@@ -82,14 +83,16 @@ architecture test of testGenerateReadMiss is
     signal r_w : std_logic;
     signal start : std_logic;
     signal CPU_A : std_logic_vector(5 downto 0);
-    signal CPU_D : std_logic_vector(7 downto 0);
+    signal CPU_DO : std_logic_vector(7 downto 0);
+    signal CPU_DI : std_logic_vector(7 downto 0);
     signal MEM_A : std_logic_vector(5 downto 0);
     signal MEM_D : std_logic_vector(7 downto 0);
     signal busy : std_logic;
     signal enable : std_logic;
+    signal debug : std_logic;
 
 begin
-    inst1 : generateReadMiss port map(CPU_A, CPU_D, r_w, start, clk, rst, MEM_D, busy, enable, MEM_A);
+    inst1 : generateReadMiss port map(CPU_A, CPU_DO, CPU_DI, r_w, start, clk, rst, MEM_D, busy, enable, MEM_A);
 
 tclk : process
     begin  -- process clk
@@ -121,7 +124,7 @@ MEM_D(5) <= '1';
 MEM_D(6) <= '1';
 MEM_D(7) <= '1';
 
-wait for 20 ns;
+wait for 40 ns;
 MEM_D(0) <= '0';
 MEM_D(1) <= '1';
 MEM_D(2) <= '0';
@@ -131,7 +134,7 @@ MEM_D(5) <= '1';
 MEM_D(6) <= '0';
 MEM_D(7) <= '1';
 
-wait for 20 ns;
+wait for 40 ns;
 MEM_D(0) <= '1';
 MEM_D(1) <= '0';
 MEM_D(2) <= '1';
@@ -141,7 +144,7 @@ MEM_D(5) <= '0';
 MEM_D(6) <= '1';
 MEM_D(7) <= '0';
 
-wait for 20 ns;
+wait for 40 ns;
 MEM_D(0) <= '1';
 MEM_D(1) <= '1';
 MEM_D(2) <= '1';
@@ -151,7 +154,7 @@ MEM_D(5) <= '0';
 MEM_D(6) <= '0';
 MEM_D(7) <= '0';
 
-wait for 20 ns;
+wait for 40 ns;
 MEM_D(0) <= '0';
 MEM_D(1) <= '0';
 MEM_D(2) <= '0';
@@ -160,68 +163,9 @@ MEM_D(4) <= '0';
 MEM_D(5) <= '0';
 MEM_D(6) <= '0';
 MEM_D(7) <= '0';
-
 wait;
-
-
 end process MEMD;
 
---io_process: process
---        file infile  : text is in "GRM_in.txt"; -- Use input file called "alu_4in.txt" to test inputs
---        file outfile : text is out "GRM_out.txt"; -- Put output results in file called "alu_4out.txt"
---        variable rst_i, r_w_i, start_i, busy_i, HitMiss_i: std_logic; -- Declare 4-bit input variable
---        variable CPU_A_i , MEM_A_i: std_logic_vector(5 downto 0);
---        variable MEM_D_i , CPU_D_i: std_logic_vector(7 downto 0); -- Declare more input varaibles
---        variable buf : line;
-
---        begin
-
---        while not (endfile(infile)) loop
---            -- Readline for input file declared below
---            readline(infile,buf);
---            read (buf,rst_i);
---            rst <= rst_i;
-        
---            readline(infile,buf);
---            read (buf,r_w_i);
---            r_w <= r_w_i;
-
---            readline(infile,buf);
---            read (buf,start_i);
---            start <= start_i;
-
---            readline(infile,buf);
---            read (buf,CPU_A_i);
---            CPU_A <= CPU_A_i;
-
---            readline(infile,buf);
---            read (buf,MEM_D_i);
---            MEM_D <= MEM_D_i;
-
---            readline(infile,buf);
---            read (buf,HitMiss_i);
---            HitMiss <= HitMiss_i;
-
-
---            wait until falling_edge(clk);
---            -- output
---            busy_i := busy;
---            CPU_D_i := CPU_D;
---            MEM_A_i := MEM_A;
-
-
---            write(buf,busy_i);
---            writeline(outfile,buf);
-
---            write(buf,CPU_D_i);
---            writeline(outfile,buf);
-
---            write(buf,MEM_A_i);
---            writeline(outfile,buf);
-
---        end loop;
-
---    end process io_process;
 manualInp: process 
 begin
 rst <= '0';
@@ -237,14 +181,48 @@ CPU_A(5) <= '0';
 wait for 20 ns;
 start <= '0';
 
-wait for 400 ns;
-start <= '1';
+wait for 340 ns;
+CPU_A(0) <= '0';
+CPU_A(1) <= '0';
+CPU_A(2) <= '0';
+CPU_A(3) <= '0';
+CPU_A(4) <= '0';
+CPU_A(5) <= '0';
 
+wait for 60 ns;
+CPU_A(0) <= '0';
+CPU_A(1) <= '0';
+CPU_A(2) <= '1';
+CPU_A(3) <= '0';
+CPU_A(4) <= '0';
+CPU_A(5) <= '0';
+start <= '1';
 wait for 20 ns;
 start <= '0';
 
-wait for 400 ns;
+wait for 360 ns;
 r_w <= '0';
+CPU_DI(0) <= '1';
+CPU_DI(1) <= '0';
+CPU_DI(2) <= '1';
+CPU_DI(3) <= '0';
+CPU_DI(4) <= '1';
+CPU_DI(5) <= '0';
+CPU_DI(6) <= '1';
+CPU_DI(7) <= '0';
+start<='1';
+
+wait for 20 ns;
+start<='0';
+
+wait for 100 ns;
+CPU_A(0) <= '0';
+CPU_A(1) <= '0';
+CPU_A(2) <= '1';
+CPU_A(3) <= '0';
+CPU_A(4) <= '0';
+CPU_A(5) <= '0';
+r_w <= '1';
 start<= '1';
 
 wait for 20 ns;
@@ -253,10 +231,11 @@ start <= '0';
 wait for 400 ns;
 CPU_A(0) <= '1';
 CPU_A(1) <= '1';
-CPU_A(2) <= '0';
+CPU_A(2) <= '1';
 CPU_A(3) <= '1';
 CPU_A(4) <= '1';
-CPU_A(5) <= '1';
+CPU_A(5) <= '0';
+r_w <= '1';
 start <= '1';
 
 wait for 20 ns;
