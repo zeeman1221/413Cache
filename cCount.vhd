@@ -22,7 +22,10 @@ entity cCount is
     clk12    : out std_logic;
     clk14    : out std_logic;
     clk16    : out std_logic;
-    clk8long : out std_logic);
+    clk8long : out std_logic;
+    clk102beat:out std_logic;
+    clk122beat:out std_logic;
+    clk142beat:out std_logic);
 end cCount;
 
 
@@ -68,13 +71,16 @@ signal vcc : std_logic:='1';
    -- setclk5 : and5 port map (t0, t1bar, t2, t3bar, t4bar, clk5);
    -- setclk6 : and5 port map (t0bar, t1, t2, t3bar, t4bar, clk6);
     setclk7 : and5 port map (t0, t1, t2, t3bar, t4bar, clk7);
-    setclk8 : and5 port map (vcc, t1bar, t2bar, t3, t4bar, clk8);
+    setclk8 : and5 port map (t0bar, t1bar, t2bar, t3, t4bar, clk8);
   --  setclk9 : and5 port map (t0, t1bar, t2bar, t3, t4bar, clk9);
-    setclk10 : and5 port map (vcc, t1, t2bar, t3, t4bar, clk10);
+    setclk10 : and5 port map (t0bar, t1, t2bar, t3, t4bar, clk10);
+    setclk102beat : and5 port map (vcc, t1, t2bar, t3, t4bar, clk102beat);
   --  setclk11 : and5 port map (t0, t1, t2bar, t3, t4bar, clk11);
-    setclk12 : and5 port map (vcc, t1bar, t2, t3, t4bar, clk12);
+      setclk12 : and5 port map (t0bar, t1bar, t2, t3, t4bar, clk12);
+    setclk122beat : and5 port map (vcc, t1bar, t2, t3, t4bar, clk122beat);
  --   setclk13 : and5 port map (t0, t1bar, t2, t3, t4bar, clk13);
-    setclk14 : and5 port map (vcc, t1, t2, t3, t4bar, clk14);
+     setclk14 : and5 port map (t0bar, t1, t2, t3, t4bar, clk14);
+    setclk142beat : and5 port map (vcc, t1, t2, t3, t4bar, clk142beat);
   --  setclk15 : and5 port map (t0, t1, t2, t3, t4bar, clk15);
     setclk16 : and5 port map (vcc, t1bar, t2bar, t3bar, t4, clk16);
   --  setclk17 : and5 port map (t0, t1bar, t2bar, t3bar, t4, clk17);

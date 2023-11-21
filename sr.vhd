@@ -13,32 +13,34 @@ entity sr is
          clk : in std_logic;
          J   : in  std_logic;
          K : in  std_logic;
-         q   : out std_logic;
-         qbar: out std_logic); 
+         q   : out std_logic); 
 end sr;                          
 
 architecture structural of sr is 
-signal qtemp : std_logic:='0';
-signal qbartemp : std_logic:='1';  
-begin
-  
-  output: process                 
 
+component nor2
+  port (
+    input1    : in  std_logic;
+    input2   : in std_logic;
+    output   : out std_logic);
+end component;
+signal qtemp : std_logic:='0';
+signal qbar : std_logic:='1';  
+
+begin
+  output : process (clk, J, K)
   begin
-    q <= qtemp;
-    qbar <= qbartemp;                            
-    wait until ( clk'EVENT and clk = '1' );
-    if J = '1' and K = '1' then
-      qtemp <= qbartemp;
-      qbartemp <= not qtemp; 
-  elsif J = '1' then
-        qtemp <= '1';
-        qbartemp <= '0';
-  elsif K = '1' then
-      qtemp <= '0';
-      qbartemp <= '1';
+  q <= qtemp;
+  if (clk'event and clk='1') then
+  --  if J = '1' and K = '1' then
+   --     qtemp<='0';
+    if J = '1' and K = '0' then
+        qtemp<='1';
+    elsif J = '0' and K = '1' then
+        qtemp<='0';
     end if;
-  end process output;           
+  end if;     
+  end process output;  
 end structural;  
 
 

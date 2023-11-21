@@ -15,10 +15,15 @@ end chip_test;
   
 architecture test of chip_test is
 
+--CPU_DO and CPU_DI are two split signals from the original CPU_D inout signal
+--CPU_DO is a pure output (and is read to the waveform as such
+--CPU_DI is a pure input and reads in from the chip_test.txt file
+--if then are combined, the CPU_D line becomes XX whenever data is pushed back through its output function
   component generateReadMiss  
     port (
     CPU_A : in std_logic_vector(5 downto 0);
-    CPU_D : inout std_logic_vector(7 downto 0);
+    CPU_DO : out std_logic_vector(7 downto 0);
+    CPU_DI : in std_logic_vector(7 downto 0);
     r_w   : in std_logic;
     start : in std_logic;
     clk   : in std_logic;
@@ -26,7 +31,8 @@ architecture test of chip_test is
     MEM_D : in std_logic_vector(7 downto 0);
     busy  : out std_logic;
     enable : out std_logic;
-    MEM_A : out std_logic_vector(5 downto 0)
+    MEM_A : out std_logic_vector(5 downto 0);
+    debug: out std_logic
 );
       
   end component;
@@ -36,9 +42,9 @@ architecture test of chip_test is
   for c1 : generateReadMiss use entity work.generateReadMiss(structural);
 
   signal Vdd, Gnd: std_logic;
-  signal cpu_data, mem_data: std_logic_vector(7 downto 0);
+  signal cpu_datao, cpu_datai, mem_data: std_logic_vector(7 downto 0);
   signal cpu_add, mem_add: std_logic_vector(5 downto 0);
-  signal cpu_rd_wrn, reset, clk, start, clock, busy, mem_en: std_logic;
+  signal cpu_rd_wrn, reset, clk, start, clock, busy, mem_en,debug: std_logic;
 
   signal clk_count: integer:=0;
 
@@ -59,7 +65,7 @@ procedure print_output is
    write (out_line, string' (" CPU address: "));
    write (out_line, cpu_add);
    write (out_line, string'(" CPU data: "));
-   write (out_line, cpu_data);
+   write (out_line, cpu_datao);
    writeline(output, out_line);
    
    write (out_line, string'(" Memory data: "));
@@ -91,7 +97,7 @@ begin
   Gnd <= '0';
   clk <= clock;
   
-  c1 : generateReadMiss port map (cpu_add, cpu_data, cpu_rd_wrn, start, clk, reset, mem_data, busy, mem_en, mem_add);   
+  c1 : generateReadMiss port map (cpu_add, cpu_datao, cpu_datai, cpu_rd_wrn, start, clk, reset, mem_data, busy, mem_en, mem_add,debug);   
 
   clking : process
   begin
@@ -121,7 +127,7 @@ begin
 
       readline(infile, buf);
       read(buf, value);
-      cpu_data <= value;
+      cpu_datai <= value;
 
       readline(infile, buf);
       read(buf, value1);

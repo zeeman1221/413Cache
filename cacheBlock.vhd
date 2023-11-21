@@ -48,7 +48,8 @@ port (
   MEM_D : in std_logic_vector(7 downto 0);
   clk16 : in std_logic;
   WriteD : in std_logic_vector(7 downto 0);
-  clk1 : in std_logic
+  clk1 : in std_logic;
+  debug : out std_logic
 );
 end cacheBlock;
 
@@ -126,7 +127,7 @@ signal rdD10 : std_logic_vector(7 downto 0);
 signal rdD11 : std_logic_vector(7 downto 0);
 -- constant --
 --signal pwr : std_logic;
-signal vcc : std_logic;
+signal vcc : std_logic:='1';
 --signal rdD_Q : std_logic_vector(7 downto 0);
 
 begin
@@ -142,10 +143,10 @@ begin
     makeSelector4 : selector port map(ce11, r_w, readE4, writeE4, Hit);
     -- create 4 cache bytes for instantiaton --
 
-    readmissstuff1 : and2 port map(sByte1, clk16, RMStuff1);
-    readmissstuff2 : and2 port map(sByte2, clk16, RMStuff2);
-    readmissstuff3 : and2 port map(sByte3, clk16, RMStuff3);
-    readmissstuff4 : and2 port map(sByte4, clk16, RMStuff4);
+    readmissstuff1 : and2 port map(ce00, clk16, RMStuff1);
+    readmissstuff2 : and2 port map(ce01, clk16, RMStuff2);
+    readmissstuff3 : and2 port map(ce10, clk16, RMStuff3);
+    readmissstuff4 : and2 port map(ce11, clk16, RMStuff4);
 
     --first instance of MEM_D eventually transisiton to CPU_D
     makeCacheByte1: cacheByte port map(readE1, WriteD, rdD00, clk8, MEM_D,RMStuff1,clk1); -- "cache00"
@@ -162,5 +163,5 @@ begin
     makeor47: or4 port map(rdD00(6), rdD01(6), rdD10(6), rdD11(6), rdD(6));
     makeor48: or4 port map(rdD00(7), rdD01(7), rdD10(7), rdD11(7), rdD(7));
 
-
+debug<=Hit;
 end structural;

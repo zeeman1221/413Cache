@@ -48,7 +48,8 @@ entity cacheMemory is
     clk16 : in std_logic;
     busy : in std_logic;
     WriteD : in std_logic_vector(7 downto 0);
-    clk1 : in std_logic
+    clk1 : in std_logic;
+    debug : out std_logic
  );
 end cacheMemory;
 
@@ -83,7 +84,8 @@ port (
   MEM_D : in std_logic_vector(7 downto 0);
   clk16 : in std_logic;
   WriteD : in std_logic_vector(7 downto 0);
-  clk1 : in std_logic
+  clk1 : in std_logic;
+  debug : out std_logic
 );
 end component;
 
@@ -129,8 +131,7 @@ component sr
          clk : in std_logic;
          J   : in  std_logic;
          K : in  std_logic;
-         q   : out std_logic;
-         qbar: out std_logic); 
+         q   : out std_logic);
 end component; 
 
 -- signals for decoder output --
@@ -160,7 +161,7 @@ begin -- CPU Address(5 downto 0): 5,4 for tag; 3,2 for block; 1,0 for byte
     -- inverting r_w for write signal --
     -- decoder for block and byte --
     makeDecoderBlock : decoder port map(sigConst, CPU_A(3), CPU_A(2), decoderO1, decoderO2, decoderO3, decoderO4);
-    makeDecoderByte : decoder port map(sigConst, CPU_A(4), CPU_A(5), decoderO5, decoderO6, decoderO7, decoderO8);
+    makeDecoderByte : decoder port map(sigConst, CPU_A(1), CPU_A(0), decoderO5, decoderO6, decoderO7, decoderO8);
     
   -- setting the CacheTag and performing HitMiss
     selTagB10 : and2 port map (CTagB1(0), decoderO1, TagB10);
@@ -183,7 +184,7 @@ begin -- CPU Address(5 downto 0): 5,4 for tag; 3,2 for block; 1,0 for byte
     setCacheTag1 : or4 port map (TagB11, TagB21, TagB31, TagB41, CacheTag(1));
     setCacheVal  : or4 port map (ValB1, ValB2, ValB3, ValB4, valid);
     
-    HitMissCalc : HitMiss port map(clk, CacheTag, CPU_A(1 downto 0), valid, Hit);
+    HitMissCalc : HitMiss port map(clk, CacheTag, CPU_A(5 downto 4), valid, Hit);
     DuringOp : and2 port map(Hit, Busy, HitQ);
     
     overwriteB1 : and2 port map(decoderO1, clk8, WriteB1Tag);
@@ -191,26 +192,26 @@ begin -- CPU Address(5 downto 0): 5,4 for tag; 3,2 for block; 1,0 for byte
     overwriteB3 : and2 port map(decoderO3, clk8, WriteB3Tag);
     overwriteB4 : and2 port map(decoderO4, clk8, WriteB4Tag);
     
-    settagB10 : cachecell port map(CPU_A(0), WriteB1Tag, sigConst, CTagB1(0),sigConstBar);
-    settagB11 : cachecell port map(CPU_A(1), WriteB1Tag, sigConst, CTagB1(1),sigConstBar);
-    setValB1 : sr port map (clk, WriteB1Tag, rst, CValB1,stud);
+    settagB10 : cachecell port map(CPU_A(4), WriteB1Tag, sigConst, CTagB1(0),sigConstBar);
+    settagB11 : cachecell port map(CPU_A(5), WriteB1Tag, sigConst, CTagB1(1),sigConstBar);
+    setValB1 : sr port map (clk, WriteB1Tag, rst, CValB1);
     
-    settagB20 : cachecell port map(CPU_A(0), WriteB2Tag, sigConst, CTagB2(0),sigConstBar);
-    settagB21 : cachecell port map(CPU_A(1), WriteB2Tag, sigConst, CTagB2(1),sigConstBar);
-    setValB2 : sr port map (clk, WriteB2Tag, rst, CValB2,stud);
+    settagB20 : cachecell port map(CPU_A(4), WriteB2Tag, sigConst, CTagB2(0),sigConstBar);
+    settagB21 : cachecell port map(CPU_A(5), WriteB2Tag, sigConst, CTagB2(1),sigConstBar);
+    setValB2 : sr port map (clk, WriteB2Tag, rst, CValB2);
     
-    settagB30 : cachecell port map(CPU_A(0), WriteB3Tag, sigConst, CTagB3(0),sigConstBar);
-    settagB31 : cachecell port map(CPU_A(1), WriteB3Tag, sigConst, CTagB3(1),sigConstBar);
-    setValB3 : sr port map (clk, WriteB3Tag, rst, CValB3,stud);
+    settagB30 : cachecell port map(CPU_A(4), WriteB3Tag, sigConst, CTagB3(0),sigConstBar);
+    settagB31 : cachecell port map(CPU_A(5), WriteB3Tag, sigConst, CTagB3(1),sigConstBar);
+    setValB3 : sr port map (clk, WriteB3Tag, rst, CValB3);
     
-    settagB40 : cachecell port map(CPU_A(0), WriteB4Tag, sigConst, CTagB4(0),sigConstBar);
-    settagB41 : cachecell port map(CPU_A(1), WriteB4Tag, sigConst, CTagB4(1),sigConstBar);
-    setValB4 : sr port map (clk, WriteB4Tag, rst, CValB4,stud);
+    settagB40 : cachecell port map(CPU_A(4), WriteB4Tag, sigConst, CTagB4(0),sigConstBar);
+    settagB41 : cachecell port map(CPU_A(5), WriteB4Tag, sigConst, CTagB4(1),sigConstBar);
+    setValB4 : sr port map (clk, WriteB4Tag, rst, CValB4);
     --accessing Cache Blocks--
-    cacheBlock1 : cacheBlock port map(HitQ, decoderO1, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB1, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1);
-    cacheBlock2 : cacheBlock port map(HitQ, decoderO2, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB2, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1);
-    cacheBlock3 : cacheBlock port map(HitQ, decoderO3, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB3, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1);
-    cacheBlock4 : cacheBlock port map(HitQ, decoderO4, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB4, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1);
+    cacheBlock1 : cacheBlock port map(HitQ, decoderO1, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB1, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1,stud);
+    cacheBlock2 : cacheBlock port map(HitQ, decoderO2, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB2, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1,stud);
+    cacheBlock3 : cacheBlock port map(HitQ, decoderO3, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB3, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1,stud);
+    cacheBlock4 : cacheBlock port map(HitQ, decoderO4, decoderO5, decoderO6, decoderO7, decoderO8, r_w, dataB4, clk9, clk10, clk12, clk14, MEM_D, clk16, WriteD,clk1,stud);
   
   setCPU_D0 : or4 port map(dataB1(0), dataB2(0), dataB3(0), dataB4(0), CPU_D(0));
   setCPU_D1 : or4 port map(dataB1(1), dataB2(1), dataB3(1), dataB4(1), CPU_D(1));
@@ -222,4 +223,5 @@ begin -- CPU Address(5 downto 0): 5,4 for tag; 3,2 for block; 1,0 for byte
   setCPU_D7 : or4 port map(dataB1(7), dataB2(7), dataB3(7), dataB4(7), CPU_D(7));
   
   HM <= HitQ;
+ debug <= WriteD(0);
 end structural;
